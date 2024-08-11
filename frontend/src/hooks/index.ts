@@ -12,12 +12,9 @@ interface Blogs {
 }
 export interface Blog {
     "content":string,
-    "id":number,
+    "id":string,
     "title":string,
     "authorId":number,
-    "author":{
-        "name":string
-    },
     "aunthorName":string
 }
 
@@ -45,7 +42,7 @@ export const useBlogs = () => {
 
 export const useBlog = ({id}:{id:string})=>{
     const [loading,setLoading] = useState(true)
-    const [blog, setBlog] = useState<Blog[]>([])
+    const [blog, setBlog] = useState<Blog>()
     // console.log(id)
     useEffect(()=>{
         try {

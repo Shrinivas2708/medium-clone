@@ -132,7 +132,7 @@ blogRouter.get("/:id",async (c) => {
       console.log(id)
       return c.json({
         title:blog?.title,
-        body:id,
+        
         content:blog?.content,
         id:blog?.id,
         aunthorName:blog?.author.name,
