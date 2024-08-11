@@ -10,7 +10,7 @@ export const userRouter =  new Hono<{
     };
   }>()
 
-userRouter.get("/signup", async (c) => {
+userRouter.post("/signup", async (c) => {
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
@@ -22,6 +22,7 @@ userRouter.get("/signup", async (c) => {
    try{
     const user = await prisma.user.create({
         data: {
+          name:body.name,
           email: body.email,
           password: body.password,
         },
@@ -37,7 +38,7 @@ userRouter.get("/signup", async (c) => {
   
     
   });
-  userRouter.get("/signin", async (c) => {
+  userRouter.post("/signin", async (c) => {
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
