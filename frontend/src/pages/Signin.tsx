@@ -6,7 +6,9 @@ function Signin() {
   return (
     <div className="md:grid grid-cols-2">
       <div>
-      <BackButton/>
+      <div className="absolute top-[5%] left-[4%]">
+      <BackButton toWhere={"/"}/>
+      </div>
       <Auth type="signin" />
       </div>
       <Quote />
