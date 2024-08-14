@@ -1,3 +1,4 @@
+import Skeleton from "react-loading-skeleton";
 import { Blog } from "../hooks";
 import AppBar from "./AppBar";
 import Avatar from "./Avatar";
@@ -22,7 +23,7 @@ function ExpandedBlog({blog}:{blog:Blog}) {
         <div className="col-span-4  ">
           <div>Author</div>
           <div className="flex items-center gap-2 mt-2">
-          <Avatar authorName={blog.aunthorName } />
+          {<Avatar authorName={blog.aunthorName } /> || <Skeleton className="w-8 h-8 inline-block" circle={true}  />}
           <div className="font-medium text-lg">{blog.aunthorName || "Anonymus"}</div>
           </div>
         

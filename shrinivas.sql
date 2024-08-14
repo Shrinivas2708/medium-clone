@@ -1,5 +1,5 @@
--- SELECT VERSION(), CURRENT_DATE; 
 -- SHOW databases; -- used to show all present databases
+-- SELECT VERSION(), CURRENT_DATE; 
 -- create database shrinivas_db; 
 -- drop database shrinivas;
 

@@ -1,4 +1,4 @@
-function Button({type,onClick}:{type:string,onClick:()=> void}) {
+function Button({type,onClick}:{type?:string,onClick:()=> void}) {
   return (
     <button
       type="button"

@@ -12,7 +12,9 @@ model User {
   email    String   @unique
   name     String?
   password String
+  createAt DateTime @default(now())
   blogs    Blog[]
+  
 }
 
 model Blog {
@@ -20,6 +22,16 @@ model Blog {
   authorId  String
   title     String
   content   String
+  publishedDate     DateTime?
   published Boolean  @default(false)
   author    User     @relation(fields: [authorId], references: [id])
+}
+
+model Admins {
+  id       String   @id @default(uuid())
+  email    String   @unique
+  password String
+  name     String?
+  createAt DateTime @default(now())
+  
 }

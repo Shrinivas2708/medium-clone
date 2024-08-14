@@ -20,7 +20,7 @@ function BlogCard({
     <Link to={`/blog/${id}`}>
     <div className=" cursor-pointer p-4 border-solid border-b-[1px] border-slate-200 font-poppins w-screen max-w-screen-sm ">
       <div className="flex py-2">
-        <Avatar authorName={authorName} />
+        {<Avatar authorName={authorName} />}
         <div className="font-light flex text-sm items-center pl-2">
           {authorName}
           <div className="pl-1">
