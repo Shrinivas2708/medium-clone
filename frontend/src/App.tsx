@@ -7,12 +7,14 @@ import Blogs from './pages/Blogs'
 import Home from './pages/Home'
 import Publish from './components/Publish'
 
+
 function App() {
 
 
   return (
     <>
      <BrowserRouter> 
+
      <Routes>
       <Route index element={<Home/>} />
       <Route path='/signin'   element={<Signin />} />
