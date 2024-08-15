@@ -70,7 +70,7 @@ export const useBlogs = () => {
           axios
             .get(`${BACKEND_URL}/api/v1/blog/${id}`, {
               headers: {
-                Authorization: localStorage.getItem('token') || '',
+                Authorization: localStorage.getItem('token') ,
               },
             })
             .then((response) => {
