@@ -24,6 +24,8 @@ function Auth({type}:{type: string}) {
     const jwt = response.data.jwt;
     console.log(jwt)
     localStorage.setItem("token",jwt)
+    console.log(response.data)
+    localStorage.setItem("UserName",response.data.userName)
     navigate("/blogs")
     } catch (error) {
       console.log(error)

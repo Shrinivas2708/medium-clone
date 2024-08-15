@@ -30,7 +30,10 @@ userRouter.post("/signup", async (c) => {
         },
       }); 
       const token = await sign({id:user.id}, c.env.jwtsecret)
-      return c.json({jwt:token,userDate:user.createAt});
+      return c.json({
+        jwt:token,
+        userName:body.name
+      });
    }catch(e){
     console.log(e)
     return c.json({msg:"error"})
