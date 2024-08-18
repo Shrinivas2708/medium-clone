@@ -1,2 +1,2 @@
 npm i <br/>
-npm run dev
+npm run dev.
