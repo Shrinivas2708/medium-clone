@@ -61,7 +61,7 @@ function Auth({type}:{type: string}) {
 
   }
   return (
-    <div className="h-screen flex flex-col justify-center  w-[100%]  items-center gap-2 ">
+    <div className="h-screen flex flex-col justify-center  w-[100%]  items-center  ">
       
       <div className=" w-[80%] lg:w-[60%] md:w-[80%]">
       <div className="  text-3xl text-center font-bold font-poppins">

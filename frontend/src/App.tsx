@@ -7,6 +7,8 @@ import Blog from './pages/Blog'
 import Blogs from './pages/Blogs'
 import Home from './pages/Home'
 import Publish from './components/Publish'
+// import AppBar from './components/AppBar';
+import Header from './layouts/Header';
 
 
 function App() {
@@ -15,7 +17,7 @@ function App() {
   return (
     <>
      <BrowserRouter> 
-
+    <Header />
      <Routes>
       <Route index element={<Home/>} />
       <Route path='/signin'   element={<Signin />} />

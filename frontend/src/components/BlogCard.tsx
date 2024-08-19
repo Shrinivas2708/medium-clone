@@ -16,6 +16,7 @@ function BlogCard({
   id
 }: BlogCardTypes) {
     const isContentHigh = content.length > 100;
+    const wordCount =  content.split(/\s+/).length;
   return (
     <Link to={`/blog/${id}`}>
     <div className=" cursor-pointer p-4 border-solid border-b-[1px] border-slate-200 font-poppins w-screen max-w-screen-sm ">
@@ -36,7 +37,7 @@ function BlogCard({
         {content.slice(0, 100) } <span className="font-semibold ">{isContentHigh ? "..." : null }</span>
       </div>
       <div className="text-xs font-light text-slate-600">
-        {Math.ceil(content.length / 100)} min read
+        {Math.ceil(wordCount/200)} min read
       </div>
     </div>
     </Link>
@@ -47,3 +48,4 @@ function Circle() {
   return <div className="w-1 h-1 rounded-full bg-slate-400"></div>;
 }
 export default BlogCard;
+

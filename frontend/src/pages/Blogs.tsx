@@ -29,7 +29,7 @@ function Blogs() {
       <AppBar />
       <div className="flex justify-center">
         <div className=" ">
-          {blogs.map((blog, index) => {
+          {blogs.reverse().map((blog, index) => {
             return (
               <BlogCard
                 key={index}

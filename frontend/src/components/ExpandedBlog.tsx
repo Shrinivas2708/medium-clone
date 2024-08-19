@@ -16,7 +16,7 @@ function ExpandedBlog({blog}:{blog:Blog}) {
           <div className="text-slate-400 pt-2">
             Posted On 2nd Aug 2024
           </div>
-          <div className="pt-4">
+          <div className="pt-4 ">
             {blog.content}
           </div>
         </div>

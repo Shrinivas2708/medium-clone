@@ -7,7 +7,7 @@ export const Quote = () =>{
         <div className="text-lg text-balance font-poppins font-semibold mt-2 ">
             Jullis Winfield 
         </div>
-        <div className="text-sm text-balance font-poppins font-normal text-gray-600">
+        <div className="text-sm text-pretty font-poppins font-normal text-gray-600">
             CEO, ACME Inc
         </div>
        </div>
