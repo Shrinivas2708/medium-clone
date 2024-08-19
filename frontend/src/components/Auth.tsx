@@ -5,6 +5,7 @@ import { signinInput, signupInput } from "@shrinivas_2708/medium-common";
 import Button from "./Button";
 import axios  from "axios"
 import { BACKEND_URL } from "../config";
+import {  toast } from "react-toastify";
 
 function Auth({type}:{type: string}) {
   const navigate = useNavigate()
@@ -24,11 +25,27 @@ function Auth({type}:{type: string}) {
     const jwt = response.data.jwt;
     console.log(jwt)
     localStorage.setItem("token",jwt)
-    console.log(response.data)
+    console.log(response)
     localStorage.setItem("UserName",response.data.userName)
-    navigate("/blogs")
+    
+    if(response.data.jwt){
+      toast.success('Successfully Signed in');
+        navigate("/blogs")
+    }
+   
+    
     } catch (error) {
-      console.log(error)
+      
+     console.log(error)
+
+     const err = error as Error
+    //  console.log(err.message)
+        if(err.message == "Request failed with status code 409"){
+          toast.error("Email Already Exist")
+          return
+        }
+      
+        toast.error("Invalid Credentials")
     }
 
   }

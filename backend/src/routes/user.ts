@@ -20,7 +20,18 @@ userRouter.post("/signup", async (c) => {
     const { success } = signinInput.safeParse(body)
     if(!success) {c.status(411) 
       return c.json({message:"incorrect inputs"})}
+  
    try{
+    const isUserExist = await prisma.user.findUnique({
+      where:{
+        email: body.email,
+      }
+    })
+    console.log(isUserExist)
+    if(isUserExist){
+      c.status(409)
+      return c.json({message:"email already exist"})
+    }
     const user = await prisma.user.create({
         data: {
           name:body.name,
@@ -36,7 +47,8 @@ userRouter.post("/signup", async (c) => {
       });
    }catch(e){
     console.log(e)
-    return c.json({msg:"error"})
+    c.status(411)
+    return c.json({msg:"Error While Creating User"})
    }
   
     
