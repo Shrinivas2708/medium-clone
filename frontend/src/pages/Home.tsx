@@ -2,7 +2,7 @@
 
 import ImgSvg from "../assets/undraw_content_creator_re_pt5b.svg"
 function Home() {
-  return <div className=" flex  h-screen bg-backgroundcolor justify-center  items-center  ">
+  return <div className=" flex overflow-hidden h-[100vh] bg-backgroundcolor justify-center  items-center m-0 p-0 ">
    {/* <Header /> */}
    <div className="flex flex-col  md:w-[60%] md:pl-10  w-[90%] 	 ">
    <p className=" text-7xl md:text-[5.5rem] lg:text-[7rem]  font-medium font-serif ">Unfold Your   
@@ -27,7 +27,7 @@ function Home() {
 }
 function HomeFooter(){
   return (
-    <div className="bg-white p-4 absolute bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-medium font-serif">
+    <div className="bg-transparent h-[50px] flex justify-center items-center fixed bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-medium font-serif overflow-hidden left-0">
       Made With 💖 By Shri
     </div>
   )

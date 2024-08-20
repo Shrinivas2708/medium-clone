@@ -1,17 +1,15 @@
 import Auth from "../components/Auth";
-import BackButton from "../components/BackButton";
+// import BackButton from "../components/BackButton";
 
-import { Quote } from "../components/Quote";
+// import { Quote } from "../components/Quote";
 
 function Signup() {
   
   return (
-    <div className="md:grid grid-cols-2 ">
-       <div className="absolute top-[10%] left-[4%]">
-      <BackButton toWhere={"/"}/>
-      </div>
+    <div className=" bg-[#F7F4ED]">
+       
       <Auth type="signup" />
-      <Quote />
+      {/* <Quote /> */}
     </div>
   );
 }

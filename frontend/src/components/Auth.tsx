@@ -6,6 +6,7 @@ import Button from "./Button";
 import axios  from "axios"
 import { BACKEND_URL } from "../config";
 import {  toast } from "react-toastify";
+import BackButton from "./BackButton";
 
 function Auth({type}:{type: string}) {
   const navigate = useNavigate()
@@ -63,11 +64,14 @@ function Auth({type}:{type: string}) {
   return (
     <div className="h-screen flex flex-col justify-center  w-[100%]  items-center  ">
       
-      <div className=" w-[80%] lg:w-[60%] md:w-[80%]">
-      <div className="  text-3xl text-center font-bold font-poppins">
-        {type === "signup" ? "Create an account" : "Login in to your account"}
+      <div className=" w-[80%] bg-white rounded-lg p-10 lg:w-[40%] md:w-[80%]">
+      <div className="top-[10%] left-[4%] inline-block">
+      <BackButton toWhere={"/"}/>
       </div>
-      <div className="text-sm text-center font-poppins text-slate-400 ">
+      <div className={`text-2xl md:text-4xl text-center font-semibold font-poppins mb-3`}>
+        {type === "signup" ? "Join Blogs" : "Welcome Back"}
+      </div>
+      <div className="text-sm text-center font-poppins text-gray-500 ">
        {type === "signup" ? "Already have an account ?" : "Don't have an account ?"  } 
         <Link to={type === "signup" ? "/signin" : "/signup"}>
           <span className="underline pl-2 underline-offset-3 cursor-pointer">
@@ -101,7 +105,7 @@ function Auth({type}:{type: string}) {
             setSignUpInputs({ ...SignUpInputs, password: e.target.value });
           }}
         />
-        <Button type={type} onClick={sendReqSignup}  /></> : <>
+        <Button type={type} onClick={sendReqSignup} className=""   /></> : <>
         
         <LabelledInputs
           label={"Email"}
