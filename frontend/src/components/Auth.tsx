@@ -5,7 +5,7 @@ import { signinInput, signupInput } from "@shrinivas_2708/medium-common";
 import Button from "./Button";
 import axios  from "axios"
 import { BACKEND_URL } from "../config";
-import {  toast } from "react-toastify";
+import {  toast } from "sonner";
 import BackButton from "./BackButton";
 
 function Auth({type}:{type: string}) {
@@ -19,16 +19,17 @@ function Auth({type}:{type: string}) {
     email:"",
     password:""
   })
-  
+  const [loading,setLoading] = useState(false)
   async function sendReqSignup() {
+    setLoading(true)
     try {
-      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`,SignUpInputs);
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signu`,SignUpInputs);
     const jwt = response.data.jwt;
     console.log(jwt)
     localStorage.setItem("token",jwt)
     console.log(response)
     localStorage.setItem("UserName",response.data.userName)
-    
+    // setLoading(true)
     if(response.data.jwt){
       toast.success('Successfully Signed in');
         navigate("/blogs")
@@ -40,17 +41,25 @@ function Auth({type}:{type: string}) {
      console.log(error)
 
      const err = error as Error
-    //  console.log(err.message)
+     console.log(err.message)
         if(err.message == "Request failed with status code 409"){
           toast.error("Email Already Exist")
           return
         }
+        // if(err.message == "Request failed with status code 404"){
+        //   toast.error("Server Problem")
+        //   return
+        // }
       
         toast.error("Invalid Credentials")
+        
+    }finally{
+      setLoading(false)
     }
 
   }
   async function sendReqSignin() {
+    setLoading(true)
     try {
       const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`,SignInInputs);
     const jwt = response.data.jwt;
@@ -58,6 +67,7 @@ function Auth({type}:{type: string}) {
     navigate("/blogs")
     } catch (error) {
       console.log(error)
+      setLoading(false)
     }
 
   }
@@ -105,7 +115,8 @@ function Auth({type}:{type: string}) {
             setSignUpInputs({ ...SignUpInputs, password: e.target.value });
           }}
         />
-        <Button type={type} onClick={sendReqSignup} className=""   /></> : <>
+        
+        <Button type={type}  onClick={sendReqSignup} className={loading ? "bg-gray-800 cursor-not-allowed text-white" : ""} isLoading={loading}   /></> : <>
         
         <LabelledInputs
           label={"Email"}
