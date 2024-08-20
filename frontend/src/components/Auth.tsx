@@ -23,7 +23,7 @@ function Auth({type}:{type: string}) {
   async function sendReqSignup() {
     setLoading(true)
     try {
-      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signu`,SignUpInputs);
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`,SignUpInputs);
     const jwt = response.data.jwt;
     console.log(jwt)
     localStorage.setItem("token",jwt)
@@ -38,7 +38,7 @@ function Auth({type}:{type: string}) {
     
     } catch (error) {
       
-     console.log(error)
+    //  console.log(error)
 
      const err = error as Error
      console.log(err.message)
@@ -46,10 +46,10 @@ function Auth({type}:{type: string}) {
           toast.error("Email Already Exist")
           return
         }
-        // if(err.message == "Request failed with status code 404"){
-        //   toast.error("Server Problem")
-        //   return
-        // }
+        if(err.message == "Request failed with status code 404"){
+          toast.error("Server Problem")
+          return
+        }
       
         toast.error("Invalid Credentials")
         
