@@ -17,7 +17,7 @@ function Header() {
   // }
 
   return (
-    <div className="flex w-full fixed top-0 bg-transparent border-black border-b-[1.5px]   items-center justify-between px-5 sm:px-10 py-4 md:px-20 z-50">
+    <div className="flex w-full fixed top-0 bg-white border-black border-b-[1.5px]   items-center justify-between px-5 sm:px-10 py-4 md:px-20 z-50">
       <section className="flex items-center gap-8">
        <Link to={"/"}> <p className="md:text-2xl lg:text-3xl text-xl font-semibold font-serif">WriteFlow</p></Link>
 

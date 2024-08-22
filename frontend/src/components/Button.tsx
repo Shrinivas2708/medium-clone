@@ -17,7 +17,7 @@ function Button({
     <div className="w-[100%] flex justify-center">
       <button
         type="button"
-        className={`${className} text-white w-[30%] bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-5 flex items-center justify-center`}
+        className={`${className} text-white   md:w-[40%] bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2   mt-5 flex items-center justify-center`}
         onClick={onClick}
         disabled={isLoading}  // Disable button while loading
       >

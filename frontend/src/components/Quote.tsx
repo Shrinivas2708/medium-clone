@@ -4,10 +4,10 @@ export const Quote = () =>{
        <div className="  text-2xl text-pretty font-bold font-serif max-w-lg">
        "The Customer service that received was exceptional. The support team went above and beyond to address of my concerns. "
         </div>
-        <div className="text-lg text-balance font-poppins font-semibold mt-2 ">
+        <div className="text-lg text-balance font-sans font-semibold mt-2 ">
             Jullis Winfield 
         </div>
-        <div className="text-sm text-pretty font-poppins font-normal text-gray-600">
+        <div className="text-sm text-pretty font-sans font-normal text-gray-600">
             CEO, ACME Inc
         </div>
        </div>

@@ -25,13 +25,13 @@ function Auth({type}:{type: string}) {
     try {
       const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`,SignUpInputs);
     const jwt = response.data.jwt;
-    console.log(jwt)
+    // console.log(jwt)
     localStorage.setItem("token",jwt)
-    console.log(response)
+    // console.log(response)
     localStorage.setItem("UserName",response.data.userName)
     // setLoading(true)
     if(response.data.jwt){
-      toast.success('Successfully Signed in');
+      toast.success('Successfully Signed up');
         navigate("/blogs")
     }
    
@@ -64,9 +64,25 @@ function Auth({type}:{type: string}) {
       const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`,SignInInputs);
     const jwt = response.data.jwt;
     localStorage.setItem("token",jwt)
-    navigate("/blogs")
+    localStorage.setItem("UserName",response.data.userName)
+    if(response.data.jwt){
+      toast.success('Successfully Signed up');
+        navigate("/blogs")
+    }
     } catch (error) {
-      console.log(error)
+      const err = error as Error
+      console.log(err.message)
+      // console.log(error)
+      if(err.message == "Request failed with status code 411"){
+        toast.error("Invalid Credentials!")
+        return
+      }
+      if(err.message == "Request failed with status code 403"){
+        toast.error("Email Doesn't Exist")
+        return
+      }
+      
+    }finally{
       setLoading(false)
     }
 
@@ -74,14 +90,14 @@ function Auth({type}:{type: string}) {
   return (
     <div className="h-screen flex flex-col justify-center  w-[100%]  items-center  ">
       
-      <div className=" w-[80%] bg-white rounded-lg p-10 lg:w-[40%] md:w-[80%]">
+      <div className=" w-[80%] bg-white rounded-lg py-5 px-8 md:p-10  xl:w-[30%] lg:w-[45%] md:w-[60%]">
       <div className="top-[10%] left-[4%] inline-block">
       <BackButton toWhere={"/"}/>
       </div>
-      <div className={`text-2xl md:text-4xl text-center font-semibold font-poppins mb-3`}>
+      <div className={`text-3xl md:text-4xl text-center font-semibold font-sans mb-3`}>
         {type === "signup" ? "Join Blogs" : "Welcome Back"}
       </div>
-      <div className="text-sm text-center font-poppins text-gray-500 ">
+      <div className="md:text-sm text-[0.8rem] text-center font-sans text-gray-500 ">
        {type === "signup" ? "Already have an account ?" : "Don't have an account ?"  } 
         <Link to={type === "signup" ? "/signin" : "/signup"}>
           <span className="underline pl-2 underline-offset-3 cursor-pointer">
@@ -89,7 +105,7 @@ function Auth({type}:{type: string}) {
           </span>
         </Link>
       </div>
-      <div>
+      <div className="mt-5">
         {
           type === "signup" ? <><LabelledInputs
           label={"Username"}
@@ -134,7 +150,7 @@ function Auth({type}:{type: string}) {
             setSignInInputs({ ...SignInInputs, password: e.target.value });
           }}
         />
-        <Button type={type} onClick={sendReqSignin} />
+        <Button type={type}  onClick={sendReqSignin} className={loading ? "bg-gray-800 cursor-not-allowed text-white" : ""} isLoading={loading}  />
         </>
         }
       </div>

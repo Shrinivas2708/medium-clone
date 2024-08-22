@@ -14,7 +14,7 @@ function Blog() {
           
       <AppBar />
       <div className="flex justify-center pt-10 ">
-      <div className="grid grid-cols-12 px-20    w-full font-poppins max-w-screen-xl ">
+      <div className="grid grid-cols-12 px-20    w-full font-sans max-w-screen-xl ">
         <div className="col-span-8">
          
           <Skeleton className="w-[50%] h-[10%]"/>
