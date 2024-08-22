@@ -1,6 +1,7 @@
 // import Header from "../layouts/Header"
 
 import ImgSvg from "../assets/undraw_content_creator_re_pt5b.svg"
+import { Footer } from "../layouts/Footer"
 function Home() {
   return <div className=" flex overflow-hidden h-[100vh] bg-backgroundcolor justify-center  items-center m-0 p-0 ">
    {/* <Header /> */}
@@ -22,14 +23,14 @@ function Home() {
    <div className="hidden md:block w-[30%] ">
     <img src={ImgSvg} className= "h-[35rem] w-[35rem]"  />
    </div>
-   <HomeFooter />
+   <Footer />
   </div>
 }
-function HomeFooter(){
-  return (
-    <div className="bg-transparent h-[50px] flex justify-center items-center fixed bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-medium font-serif overflow-hidden left-0">
-      Made With 💖 By Shri
-    </div>
-  )
-}
+// function HomeFooter(){
+//   return (
+//     <div className="bg-transparent h-[50px] flex justify-center items-center fixed bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-medium font-serif overflow-hidden left-0">
+//       Made With 💖 By Shri
+//     </div>
+//   )
+// }
 export default Home
