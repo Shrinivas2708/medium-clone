@@ -2,6 +2,32 @@
 
 import { Link } from "react-router-dom"
 import ImgSvg from "../assets/undraw_content_creator_re_pt5b.svg"
+
+// import { Footer } from "../layouts/Footer"
+
+const data = [
+  {
+    pageName:"Home",
+    linkName:"/",
+  },
+  {
+    pageName:"About",
+    linkName:"/about",
+  },
+  {
+    pageName:"Socials",
+    linkName:"/socials",
+  },
+  {
+    pageName:"Signup",
+    linkName:"/signup",
+  },
+  {
+    pageName:"Signin",
+    linkName:"/signin",
+  }
+]
+
 function Home() {
   return <div className=" flex overflow-hidden h-[100vh] bg-backgroundcolor justify-center  items-center m-0 p-0 ">
    {/* <Header /> */}
@@ -23,14 +49,35 @@ function Home() {
    <div className="hidden md:block w-[30%] ">
     <img src={ImgSvg} className= "h-[35rem] w-[35rem]"  />
    </div>
-   <Footer />
+   <HomeFooter />
   </div>
 }
-function HomeFooter(){
+
+// function HomeFooter(){
+//   return (
+//     <div className="bg-transparent h-[50px] flex justify-center items-center fixed bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-medium font-serif overflow-hidden left-0">
+//       Made With 💖 By Shri
+//     </div>
+//   )
+// }
+
+export function HomeFooter(){
   return (
-    <div className="bg-transparent h-[50px] flex justify-center items-center fixed bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-medium font-serif overflow-hidden left-0">
-      Made With 💖 By Shri
+    <div className="bg-white h-[50px] flex justify-center items-center fixed bottom-0 w-full text-black text-center border-black border-t-[1.5px]  text-lg font-normal font-serif overflow-hidden left-0">
+      <ul className="flex gap-5">
+        {
+          data.map((d,i)=>{
+            return <li key={i}>
+              <Link to={d.linkName}>
+              {d.pageName}
+              </Link>
+           </li>
+            
+          })
+        }
+      </ul>
     </div>
   )
 }
+
 export default Home
