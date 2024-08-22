@@ -1,11 +1,8 @@
 import {  Routes , Route, BrowserRouter } from 'react-router-dom'
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
-import Signin from './pages/Signin'
-import Signup from './pages/Signup'
-import Blog from './pages/Blog'
-import Blogs from './pages/Blogs'
-import Home from './pages/Home'
+
+import { Blog,Home,Blogs,Signin,Signup } from './pages/index'
 import Publish from './components/Publish'
 // import AppBar from './components/AppBar';
 import Header from './layouts/Header';

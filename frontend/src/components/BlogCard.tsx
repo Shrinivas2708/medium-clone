@@ -19,7 +19,7 @@ function BlogCard({
     const wordCount =  content.split(/\s+/).length;
   return (
     <Link to={`/blog/${id}`}>
-    <div className=" cursor-pointer p-4 border-solid border-b-[1px] border-slate-200 font-poppins w-screen max-w-screen-sm ">
+    <div className=" cursor-pointer p-4 border-solid border-b-[1px] border-slate-200 font-sans w-screen max-w-screen-sm ">
       <div className="flex py-2">
         {<Avatar authorName={authorName} />}
         <div className="font-light flex text-sm items-center pl-2">
