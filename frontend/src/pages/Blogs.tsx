@@ -4,6 +4,7 @@ import SkeletonLoading from "../components/SkeletonLoading";
 import { useBlogs } from "../hooks";
 
 import "react-loading-skeleton/dist/skeleton.css";
+import { Footer } from "../layouts/Footer";
 function Blogs() {
   const { loading, blogs } = useBlogs();
   if (loading) {
@@ -27,8 +28,8 @@ function Blogs() {
   return (
     <div>
       <AppBar />
-      <div className="flex justify-center">
-        <div className=" ">
+      <div className="flex justify-center bg-backgroundcolor">
+        <div className="mt-2 ">
           {blogs.reverse().map((blog, index) => {
             return (
               <BlogCard
@@ -42,6 +43,7 @@ function Blogs() {
             );
           })}
         </div>
+        <Footer />
       </div>
     </div>
   );

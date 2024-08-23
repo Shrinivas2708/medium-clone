@@ -55,6 +55,11 @@ userRouter.post("/signup", async (c) => {
   
     
   });
+
+
+
+
+
   userRouter.post("/signin", async (c) => {
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
@@ -64,14 +69,25 @@ userRouter.post("/signup", async (c) => {
     if(!success) {c.status(411) 
       return c.json({message:"incorrect inputs"})}
     try {
+      console.log("reached above the user find")
         const user =await prisma.user.findUnique({
             where:{
               email: body.email,
               password: body.password,
             }
           })
+          if(user == null) {
+            // console.log("Id not found")
+             c.status(404);
+             return c.json({msg:"User doesn't exit"})
+            }
+
+
+          console.log("reached below the user find")
+          console.log(user)
           //@ts-ignore
-          const jwtToken:string = await sign({id:user.id},c.env.jwtsecret) 
+          const jwtToken:string = await sign({id:user.id},c.env.jwtsecret)
+          console.log("reached below the jwt") 
     return c.json({jwt:jwtToken})
     } catch (error) {
         console.log(error)

@@ -1,5 +1,6 @@
 import Auth from "../components/Auth";
-import { HomeFooter } from "./Home";
+import { Footer } from "../layouts/Footer";
+// import { HomeFooter } from "./Home";
 
 
 function Signin() {
@@ -8,7 +9,7 @@ function Signin() {
       <div>
       <Auth type="signin" />
       </div>
-     <HomeFooter />
+     <Footer />
     </div>
   );
 }

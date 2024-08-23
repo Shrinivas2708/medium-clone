@@ -77,6 +77,10 @@ function Auth({type}:{type: string}) {
         toast.error("Invalid Credentials!")
         return
       }
+      if(err.message == "Request failed with status code 404"){
+        toast.error("Incorrect Password")
+        return
+      }
       if(err.message == "Request failed with status code 403"){
         toast.error("Email Doesn't Exist")
         return
@@ -91,8 +95,8 @@ function Auth({type}:{type: string}) {
     <div className="h-screen flex flex-col justify-center  w-[100%]  items-center  ">
       
       <div className=" w-[80%] bg-white rounded-lg py-5 px-8 md:p-10  xl:w-[30%] lg:w-[45%] md:w-[60%]">
-      <div className="top-[10%] left-[4%] inline-block">
-      <BackButton toWhere={"/"}/>
+      <div className={`top-[10%] left-[4%]  inline-block ${type =="signin"? "left-[0%]" : null}`}>
+      <BackButton toWhere={"/"} />
       </div>
       <div className={`text-3xl md:text-4xl text-center font-semibold font-sans mb-3`}>
         {type === "signup" ? "Join Blogs" : "Welcome Back"}
