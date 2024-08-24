@@ -6,20 +6,22 @@ interface BlogCardTypes {
   title: string;
   content: string;
   publishedDate: string;
-  id:number
+  id:number,
+  css?:string
 }
 function BlogCard({
   authorName,
   title,
   content,
   publishedDate,
-  id
+  id,
+  css
 }: BlogCardTypes) {
     const isContentHigh = content.length > 100;
     const wordCount =  content.split(/\s+/).length;
   return (
     <Link to={`/blog/${id}`}>
-    <div className=" cursor-pointer bg-white p-4 border-solid border-b-[1px] border-slate-200 font-sans w-screen max-w-screen-sm rounded-xl my-2 ">
+    <div className={`cursor-pointer bg-white p-4 border-solid border-b-[1px] border-slate-200 font-sans w-screen max-w-screen-sm rounded-xl my-2 ${css}`}>
       <div className="flex py-2">
         {<Avatar authorName={authorName} />}
         <div className="font-light flex text-sm items-center pl-2">
@@ -28,7 +30,7 @@ function BlogCard({
             <Circle />
           </div>
         </div>
-        <div className="pl-2 text-gray-400 text-xs font-extralight flex items-center">
+        <div className="pl-2 text-gray-400 text-[0.8rem] font-extralight flex items-center">
           {publishedDate}
         </div>
       </div>

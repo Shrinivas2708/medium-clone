@@ -22,6 +22,9 @@ function Auth({type}:{type: string}) {
   const [loading,setLoading] = useState(false)
   async function sendReqSignup() {
     setLoading(true)
+    if(loading){
+      toast.loading("Signing Up")
+    }
     try {
       const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`,SignUpInputs);
     const jwt = response.data.jwt;
@@ -42,6 +45,10 @@ function Auth({type}:{type: string}) {
 
      const err = error as Error
      console.log(err.message)
+     if(err.message == "Network Error"){
+      toast.error("Network Problem")
+      return
+      }
         if(err.message == "Request failed with status code 409"){
           toast.error("Email Already Exist")
           return
@@ -60,6 +67,7 @@ function Auth({type}:{type: string}) {
   }
   async function sendReqSignin() {
     setLoading(true)
+    
     try {
       const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`,SignInInputs);
     const jwt = response.data.jwt;
@@ -73,6 +81,7 @@ function Auth({type}:{type: string}) {
       const err = error as Error
       console.log(err.message)
       // console.log(error)
+     
       if(err.message == "Request failed with status code 411"){
         toast.error("Invalid Credentials!")
         return

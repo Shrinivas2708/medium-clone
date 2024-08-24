@@ -6,6 +6,7 @@ import { Blog,Home,Blogs,Signin,Signup } from './pages/index'
 import Publish from './components/Publish'
 // import AppBar from './components/AppBar';
 import Header from './layouts/Header';
+import ExamplesBlogs from './components/ExamplesBlogs';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/blog/:id" element={<Blog />} />
       <Route path='/publish' element={<Publish />}/>
+      <Route path='/demo' element={<ExamplesBlogs />} />
      </Routes>
      </BrowserRouter>
     </>

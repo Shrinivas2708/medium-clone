@@ -105,6 +105,7 @@ blogRouter.get("/bulk", async (c) => {
         content: true,
         title: true,
         id: true,
+        publishedDate: true,
         author: {
           select: {
             name: true,
@@ -112,6 +113,7 @@ blogRouter.get("/bulk", async (c) => {
         },
       },
     });
+    console.log(blogs)
     return c.json(blogs);
   } catch (error) {
     console.log(error);

@@ -12,7 +12,8 @@ interface Blogs {
     "title":string,
     "author":{
         "name":string
-    }
+    },
+    "publishedDate":string
 }
 export interface Blog {
     "content":string,
