@@ -6,6 +6,7 @@ import { ClipLoader } from "react-spinners";
 import AppBar from "./AppBar";
 import { toast } from "sonner";
 import { IoArrowBackSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 // import Button from "./Button"
 function Button({
     type,
@@ -38,22 +39,33 @@ function Button({
 function Publish() {
     const [title,setTitle] = useState("")
     const [content,setContent] = useState("")
-    console.log(title,content)
-    function sendData(){
-        axios.post(`${BACKEND_URL}/api/v1/blog`,{
+    const navigate = useNavigate()
+    // console.log(title,content)
+     async function sendData(){
+       await axios.post(`${BACKEND_URL}/api/v1/blog`,{
             title,
             content
         },{
             headers:{
                 Authorization:localStorage.getItem("token")
             }
+        }).then((res)=>{
+            console.log(res)
+            setTitle("")
+            setContent("")
+            console.log(title,content)
+            navigate("/blogs")
+            toast.success("Blog Created")
+            return res
         })
+        
+        
     }
     function handleSubmit(){
         if(title.length<1 && content.length<1){
             toast.error("Please fill in the fields")
-        }else{
-            sendData()
+        }else {
+            sendData() 
 
     }}
   return <div className="flex justify-center items-center h-screen bg-backgroundcolor ">
