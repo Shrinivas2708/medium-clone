@@ -12,6 +12,10 @@ const app = new Hono<{
   };
 }>();
 app.use("/*",cors())
+app.use("/",async (c)=>{
+    c.status(200)
+    return c.text("Medium Backend")
+})
 app.route("/api/v1/user",userRouter)
 app.route("/api/v1/blog",blogRouter)
 

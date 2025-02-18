@@ -11,8 +11,7 @@ function Blogs() {
     return (
       <div className="overflow-x-hidden ">
         <AppBar />
-        <div className="flex flex-col mt-5 gap-6">
-          <SkeletonLoading />
+        <div className="flex border-2 mt-10 flex-col  gap-6 bg-backgroundcolor">
           <SkeletonLoading />
           <SkeletonLoading />
           <SkeletonLoading />
@@ -41,8 +40,8 @@ function Blogs() {
   return (
     <div>
       <AppBar />
-      <div className="flex justify-center bg-backgroundcolor">
-        <div className="mt-2 ">
+      <div className="flex  justify-center bg-backgroundcolor">
+        <div className="mt-10 ">
           {blogs.reverse().map((blog, index) => {
           //  const date = 
           //  console.log(date)
@@ -55,7 +54,7 @@ function Blogs() {
                   content={blog.content}
                   id={blog.id}
                   publishedDate={formatDate(blog.publishedDate.split("T")[0]) }
-                  css={index == 0 ? "mt-6" : ""}
+                  css={index == 0 ? "mt-10" : ""}
                 />
               
             );

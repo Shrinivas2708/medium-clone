@@ -56,9 +56,35 @@ userRouter.post("/signup", async (c) => {
     
   });
 
+userRouter.get("/me", async (c) => {
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate());
+    const token = c.req.header("authorization");
+    if (!token) {
+      c.status(401);
+      return c.json({ error: "Missing token" });
+    }
+    const decoded = await verify(token, c.env.jwtsecret) as { id: string };
+    if (decoded) {
+      const user = await prisma.user.findUnique({
+        where: {
+          id: decoded.id,
+        },
+        select: {
+          name: true,
+          email: true,
+          
+        },
+      });
+      return c.json(user);
+    } else {
+      c.status(401);
+      return c.json({ error: "unauthorized" });
+    }
+    
 
-
-
+})
 
   userRouter.post("/signin", async (c) => {
     const prisma = new PrismaClient({

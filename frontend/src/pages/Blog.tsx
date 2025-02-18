@@ -53,7 +53,7 @@ function Blog() {
     console.log(blog);
     return (
         <div>
-            <ExpandedBlog blog={blog} /> {/* blog is now guaranteed to be defined */}
+            <ExpandedBlog blog={blog} /> 
         </div>
     );
 }
